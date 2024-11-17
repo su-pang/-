@@ -2339,6 +2339,30 @@ body.nav-active .nav__block .nav__block-item {
 
 .services-item p {
   line-height: 2;
+  font-size: 1rem;
+}
+
+.services-item h3 {
+  font-size: 1.2rem; /* 제목 크기 조정 */
+}
+
+.services-item {
+  padding: 10px; /* 내부 여백 조정 */
+  text-align: center; /* 가운데 정렬 */
+}
+
+@media (max-width: 768px) {
+  .col-md-3 {
+      flex: 0 0 33.33%; /* 3개 배치 */
+      max-width: 33.33%;
+  }
+}
+
+@media (max-width: 480px) {
+  .col-md-3 {
+      flex: 0 0 50%; /* 2개 배치 */
+      max-width: 50%;
+  }
 }
 
 @media only screen and (max-width: 1199px) {
