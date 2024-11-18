@@ -2342,10 +2342,6 @@ body.nav-active .nav__block .nav__block-item {
   font-size: 1rem;
 }
 
-.services-item h3 {
-  font-size: 1.2rem; /* 제목 크기 조정 */
-}
-
 .services-item {
   padding: 10px; /* 내부 여백 조정 */
   text-align: center; /* 가운데 정렬 */
