@@ -1360,9 +1360,11 @@ This is main CSS file that contains custom style rules used in this template
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
-  position: relative;
-  top: 43px;
-  left: 1580px;
+  position: fixed; /* 절대 위치 대신 화면에 고정 */
+  top: 45px; /* 화면 위쪽에서 50px 떨어지게 설정 */
+  left: 92%; /* 화면 가운데 정렬 */
+  transform: translateX(-50%); /* 정확한 가운데 정렬을 위해 X축으로 50% 이동 */
+  z-index: 10; /* 다른 콘텐츠 위에 표시되도록 */
 }
 
 @media (max-width: 768px) {
