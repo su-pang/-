@@ -1360,7 +1360,7 @@ This is main CSS file that contains custom style rules used in this template
   justify-content: center;
   align-items: center;
   background-color: #f9f9f9;
-  position: absolute;
+  position: relative;
   top: 43px;
   left: 1580px;
 }
