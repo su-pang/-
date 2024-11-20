@@ -1355,6 +1355,37 @@ This is main CSS file that contains custom style rules used in this template
   top: 15px;
   z-index: 1;
 }
+.oval-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+  position: absolute;
+  top: 45px;
+  left: 1580px;
+}
+
+.button-text {
+  display: inline-block;
+  padding: 3px 6px;
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  border: 2px solid white;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  position: absolute;
+  z-index: 1;
+  width: 107px;
+}
+
+.button-text:hover {
+  background-color: #757575;
+  color: white;
+  border-color: white;
+}
+
 
 .main-logo a {
   font-family: "playfair display", Georgia, serif;
@@ -1407,7 +1438,7 @@ header.nav-up {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 50%;
+  width: 100%;
 }
 
 nav#navbar ul.menu-list {
@@ -1432,6 +1463,8 @@ nav#navbar ul.menu-list {
   font-size: 1.1em;
   transition: 0.5s all ease-out;
 }
+
+
 
 /* Dropdown menu 
 --------------------------------------------------------------*/
