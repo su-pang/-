@@ -1098,6 +1098,12 @@ fieldset[disabled] a.btn {
   color: var(--accent-color) !important;
 }
 
+.filter-button.active{
+  background-color: #f4ebf2;
+  color: #121212; /* 활성화된 버튼의 색상 */
+  font-weight: bold; /* 활성화된 버튼 강조 */
+}
+
 .btn.btn-full {
   display: block;
   margin: .85em 0;
