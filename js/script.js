@@ -222,4 +222,53 @@
 		initIsotope();
 	});
 
+// 현재 활성 필터를 저장할 변수
+let currentFilter = null;
+
+document.querySelectorAll('.filter-button').forEach(button => {
+    button.addEventListener('click', function (e) {
+        e.preventDefault(); // 기본 동작 방지
+
+        // 모든 버튼에서 'active' 클래스 제거
+        document.querySelectorAll('.filter-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        // 클릭된 버튼에 'active' 클래스 추가
+        this.classList.add('active');
+
+        // 필터 상태 업데이트
+        currentFilter = this.getAttribute('data-filter');
+        console.log(`Filtering by: ${currentFilter}`);
+
+        // 필터 적용 로직 호출
+        applyFilter(currentFilter);
+    });
+});
+
+// 필터링 상태를 유지하면서 적용할 함수
+function applyFilter(filter) {
+    // 필터에 따라 원하는 동작 수행
+    console.log(`Currently applied filter: ${filter}`);
+    // 예: 특정 요소를 숨기거나 표시하기
+    document.querySelectorAll('.item').forEach(item => {
+        if (filter === 'all' || item.classList.contains(filter)) {
+            item.style.display = 'block';
+        } else {
+            item.style.display = 'none';
+        }
+    });
+}
+
+// 페이지 로드 시 초기 필터 상태 설정 (옵션)
+document.addEventListener('DOMContentLoaded', () => {
+    const initialFilterButton = document.querySelector('.filter-button.active');
+    if (initialFilterButton) {
+        currentFilter = initialFilterButton.getAttribute('data-filter');
+        applyFilter(currentFilter);
+    }
+});
+
+
+
 })(jQuery);
