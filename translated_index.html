@@ -481,7 +481,7 @@
 
 						<p>If you have any questions about our procedures or company,<br>please feel free to let us know.</p>
 
-						<form id="form-contact" class="form-light" action="con	tact.php">
+						<form id="form-contact" class="form-light" action="contact.php">
 							<p>
 								<input type="text" name="name" placeholder="name*" required>
 							</p>
@@ -497,8 +497,10 @@
 									<span>I agree to the Privacy Policy.</span>
 								</label>
 							</p>
-							<button class="btn btn-accent btn-rounded btn-xlarge btn-full">Submit</button>
+							<button class="btn btn-accent btn-rounded btn-xlarge btn-full" name="Submit">Submit</button>
 						</form>
+						<div id="response-message"></div>
+
 
 
 					</div>
@@ -520,6 +522,7 @@
 							<div class="detail">
 								<strong>Address :</strong>
 								<p>71-82, Hangman 7-ro, Gwangyang-si, Jeollanam-do, Korea</p>
+								<p class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.689590628371!2d127.66596537616448!3d34.914238572844596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x356e72e3726384e9%3A0x6b0e0be5adc344d2!2z7KCE652864Ko64-EIOq0keyWkeyLnCDtla3rp4w366GcIDcxLTgy!5e0!3m2!1sko!2skr!4v1732155999971!5m2!1sko!2skr" width="100%" height="350px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></p>
 							</div>
 						</div>
 						<div class="iconbox">
@@ -544,6 +547,48 @@
 
 		</div>
 	</section>
+
+	<script>
+		document.getElementById("form-contact").addEventListener("submit", function(event) {  // 4번째 줄
+		  event.preventDefault(); // 기본 폼 제출 동작을 막기, 5번째 줄
+	  
+		  const name = document.querySelector('[name="name"]').value;
+		  const email = document.querySelector('[name="email"]').value;
+		  const message = document.querySelector('[name="message"]').value;
+	  
+		  const data = {
+			name: name,
+			email: email,
+			message: message
+		  };
+	  
+		  fetch('https://port-0-node-server-m3qx1on5ed2e15a8.sel4.cloudtype.app/send-email', { // 9번째 줄
+			method: 'POST',
+			headers: {
+			  'Content-Type': 'application/json'  // JSON 형식으로 데이터를 보냄
+			},
+			body: JSON.stringify(data)  // 데이터를 JSON 형식으로 변환해서 전송
+		  })
+		  .then(response => response.json()) // 11번째 줄
+		  .then(data => { // 12번째 줄
+			const responseMessage = document.getElementById('response-message');  // 13번째 줄
+			if (data.success) { // 14번째 줄
+			  responseMessage.textContent = "Your email has been successfully sent!";  // 성공 메시지, 15번째 줄
+			  responseMessage.style.color = "green"; // 16번째 줄
+			} else {  // 17번째 줄
+			  responseMessage.textContent = "Failed to send the email. Please try again.";  // 실패 메시지, 18번째 줄
+			  responseMessage.style.color = "red"; // 19번째 줄
+			}  // 20번째 줄
+		  })
+		  .catch(error => { // 21번째 줄
+			const responseMessage = document.getElementById('response-message'); // 22번째 줄
+			responseMessage.textContent = "서버와의 연결에 문제가 발생했습니다. 나중에 다시 시도해주세요."; // 23번째 줄
+			responseMessage.style.color = "red"; // 24번째 줄
+		  });
+		});
+	  </script>
+	  
+
 
 	<!-- <section id="testimonial" class="padding-large">
 		<div class="container">

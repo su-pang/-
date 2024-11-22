@@ -3169,3 +3169,9 @@ footer#footer {
 .parallax-wrap .parallax-image {
   position: absolute;
 }
+
+@media (max-width: 768px) {
+  .map {
+    width: 80%;
+  }
+}
